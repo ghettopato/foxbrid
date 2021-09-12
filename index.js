@@ -1,17 +1,17 @@
 const chokidar = require('chokidar')
-const RealDebridWatcher = require('./lib/watchers/real-debrid')
+const DebridLinkWatcher = require('./lib/watchers/debrid-link')
 const Aria2Downloader = require('./lib/downloaders/aria2')
 
 const {
-  REAL_DEBRID_API_KEY,
+  DEBRID_LINK_API_KEY,
   ARIA2_URL,
   ARIA2_SECRET,
   WATCH_DIR = '/watch',
   WATCH_RATE = 5000
 } = process.env
 
-if (!REAL_DEBRID_API_KEY) {
-  console.log('[!] REAL_DEBRID_API_KEY env var is not set')
+if (!DEBRID_LINK_API_KEY) {
+  console.log('[!] DEBRID_LINK_API_KEY env var is not set')
 
   process.exit(-1)
 }
@@ -32,7 +32,7 @@ if (!ARIA2_SECRET) {
 const downloader = new Aria2Downloader(ARIA2_URL, ARIA2_SECRET)
 
 // Create a watcher instance
-const watcher = new RealDebridWatcher(REAL_DEBRID_API_KEY, downloader.download)
+const watcher = new DebridLinkWatcher(DEBRID_LINK_API_KEY, downloader.download)
 
 // Watch for new torrent files
 console.log(`[+] Watching '${WATCH_DIR}' for new torrents`)
