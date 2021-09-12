@@ -32,7 +32,7 @@ if (!ARIA2_SECRET) {
 const downloader = new Aria2Downloader(ARIA2_URL, ARIA2_SECRET)
 
 // Create a watcher instance
-const watcher = new DebridLinkWatcher(DEBRID_LINK_API_KEY, downloader.download)
+const watcher = new DebridLinkWatcher(DEBRID_LINK_API_KEY, downloader.download, downloader.status)
 
 // Watch for new torrent files
 console.log(`[+] Watching '${WATCH_DIR}' for new torrents`)

@@ -1,7 +1,7 @@
 foxbrid
 ===
 
-A debrid-link blackhole downloader using aria2 RPC.
+A debrid-link (debrid-link.fr) blackhole downloader using aria2 RPC.
 
 ### Environment Variables
 
